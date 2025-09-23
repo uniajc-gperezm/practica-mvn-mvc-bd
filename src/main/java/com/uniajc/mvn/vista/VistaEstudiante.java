@@ -1,5 +1,5 @@
-package com.ejerciciomaven.vistaEstudiante;
-import com.ejerciciomaven.modelo.Estudiante;
+package com.uniajc.mvn.vista;
+import com.uniajc.mvn.modelo.Estudiante;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.ejerciciomaven;
+package com.uniajc.mvn;
 import java.util.Scanner;
-import com.ejerciciomaven.controlador.ControladorEstudiante;
-import com.ejerciciomaven.modelo.Estudiante;
-import com.ejerciciomaven.vistaEstudiante.VistaEstudiante;
+import com.uniajc.mvn.controlador.ControladorEstudiante;
+import com.uniajc.mvn.modelo.Estudiante;
+import com.uniajc.mvn.vista.VistaEstudiante;
 
 public class Main {
     public static void main(String[] args) {

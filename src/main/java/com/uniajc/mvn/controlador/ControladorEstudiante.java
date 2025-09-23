@@ -1,7 +1,7 @@
-package com.ejerciciomaven.controlador;
-import com.ejerciciomaven.ConexionBDD;
-import com.ejerciciomaven.modelo.Estudiante;
-import com.ejerciciomaven.vistaEstudiante.VistaEstudiante;
+package com.uniajc.mvn.controlador;
+import com.uniajc.mvn.ConexionBDD;
+import com.uniajc.mvn.modelo.Estudiante;
+import com.uniajc.mvn.vista.VistaEstudiante;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

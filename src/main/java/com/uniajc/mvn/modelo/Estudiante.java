@@ -1,4 +1,4 @@
-package com.ejerciciomaven.modelo;
+package com.uniajc.mvn.modelo;
 
 
 public class Estudiante {
