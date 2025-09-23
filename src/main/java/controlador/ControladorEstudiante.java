@@ -15,7 +15,7 @@ public class ControladorEstudiante {
 
     }
     public void actualizarVista(){
-        vista.mostrarDetallesEstudiante(estudiantes);
+        vista.mostrarDetallesEstudiante(estudiantes); 
     }
     public void agregarEstudiante(Estudiante estudiante) {
         this.estudiantes.add(estudiante);
