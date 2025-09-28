@@ -1,5 +1,4 @@
 package com.uniajc.mvn.controlador;
-import com.uniajc.mvn.ConexionBDD;
 import com.uniajc.mvn.modelo.Estudiante;
 import com.uniajc.mvn.vista.VistaEstudiante;
 

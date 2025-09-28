@@ -1,4 +1,4 @@
-package com.uniajc.mvn;
+package com.uniajc.mvn.controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
