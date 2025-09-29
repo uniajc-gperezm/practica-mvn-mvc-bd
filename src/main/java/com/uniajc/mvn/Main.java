@@ -10,27 +10,33 @@ public class Main {
     public static void main(String[] args) {
 
         Connection conexion = ConexionBDD.getConnection();
-        Scanner sc = new Scanner(System.in);
 
+
+        Scanner sc = new Scanner(System.in);
         VistaEstudiante vista = new VistaEstudiante();
         ControladorEstudiante controlador = new ControladorEstudiante(new Estudiante(0,"", 0), vista);
 
+        //Para el Id del Estudiante
         System.out.println("Ingrese el id del estudiante: ");
         int id = sc.nextInt();
-        //sc.nextLine();
+        sc.nextLine();
 
+        //Para el nombre del estudiante
         System.out.println("Ingrese el nombre del estudiante: ");
         String nombre = sc.nextLine();
 
+        //Para la Edad del estudiante
         System.out.println("Ingrese la edad del estudiante: ");
         int edad = sc.nextInt();
 
+
         Estudiante estudiante = new Estudiante(id, nombre, edad);
 
+        //Llamar metodos
         controlador.agregarEstudiante(estudiante);  
-        controlador.actualizarVista();              
-        controlador.guardarEnBD(estudiante);        
-
+        controlador.actualizarVista();    
+        
+                            
         sc.close();
     }
 }

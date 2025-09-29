@@ -13,7 +13,6 @@ import java.io.FileInputStream;
 public class ConexionBDD {
 
   private static Connection connection = null;
-
   public static Connection getConnection() {
 
     System.out.println("Intentando conectar a la base de datos...");
@@ -26,14 +25,15 @@ public class ConexionBDD {
         Class.forName("com.mysql.cj.jdbc.Driver");
         properties.load(new FileInputStream(new File("config.properties")));
 
-        // Configurar los parámetros de conexión
+        //Par hacer la conexion a la BDD
         String url = properties.get("URL").toString();
         String username = properties.get("USERNAME").toString();
         String password = properties.get("PASSWORD").toString();
 
         // Establecer la conexión
         connection = DriverManager.getConnection(url, username, password);
-
+        
+        //Mensaje de conexion Exitosa
         System.out.println("La conexion con la base de datos a sido exitosa!!!");
 
       } catch (ClassNotFoundException e) {
@@ -49,7 +49,7 @@ public class ConexionBDD {
     }
     return connection;
   }
-
+  
   public static void closeConnection() {
     if (connection != null) {
       try {

@@ -1,5 +1,7 @@
 package com.uniajc.mvn.modelo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 public class Estudiante {
     private int id;
@@ -34,6 +36,23 @@ public class Estudiante {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    //Metodo para crear y guardar el Estudiante a la base de datos
+    public static void insertarEstudiante(Estudiante estudiante) {
+    String sql = "INSERT INTO estudiante (Id, nombre, edad) VALUES (?,?,?)";
+    try (Connection conn = ConexionBDD.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, estudiante.getId());
+        stmt.setString(2, estudiante.getNombre());
+        stmt.setInt(3, estudiante.getEdad());
+        stmt.executeUpdate();
+        
+
+        } catch (Exception ex) {
+        ex.printStackTrace();
+        }
     }
 
     
