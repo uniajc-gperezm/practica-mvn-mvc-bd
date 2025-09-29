@@ -30,7 +30,7 @@ public class ConexionDatabase {
 
         // Configurar los parámetros de conexión
         String url = properties.get("URL").toString();
-        String username = properties.get("USERNAME").toString();
+        String username = properties.get("USER").toString();
         String password = properties.get("PASSWORD").toString();
 
         // Establecer la conexión
@@ -45,7 +45,7 @@ public class ConexionDatabase {
       } catch (FileNotFoundException e) {
         // TODO Auto-generated catch block
         // System.out.println("Archivo de configuración no encontrado: " +
-        // e.getMessage());
+        //e.getMessage());
         e.printStackTrace();
       } catch (IOException e) {
         // TODO Auto-generated catch block
