@@ -2,10 +2,12 @@ package com.uniajc.mvn.modelo;
 
 
 public class Estudiante {
+    
     private String nombre;
     private int edad;
 
-    public Estudiante(String nombre, int edad) {
+    public Estudiante( String nombre, int edad) {
+    
         this.nombre = nombre;
         this.edad = edad;
     }
