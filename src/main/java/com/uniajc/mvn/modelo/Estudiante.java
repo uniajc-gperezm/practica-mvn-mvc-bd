@@ -2,14 +2,22 @@ package com.uniajc.mvn.modelo;
 
 
 public class Estudiante {
-    
+    private int id;
     private String nombre;
     private int edad;
 
-    public Estudiante( String nombre, int edad) {
-    
+    public Estudiante( int id, String nombre, int edad) {
+        this.id = id;
         this.nombre = nombre;
         this.edad = edad;
+    }
+
+    public int getId (){
+        return this.id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getNombre() {

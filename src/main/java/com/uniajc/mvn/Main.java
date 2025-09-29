@@ -13,15 +13,19 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         VistaEstudiante vista = new VistaEstudiante();
-        ControladorEstudiante controlador = new ControladorEstudiante(new Estudiante("", 0), vista);
+        ControladorEstudiante controlador = new ControladorEstudiante(new Estudiante(0,"", 0), vista);
 
-        System.out.print("Ingrese el nombre del estudiante: ");
+        System.out.println("Ingrese el id del estudiante: ");
+        int id = sc.nextInt();
+        //sc.nextLine();
+
+        System.out.println("Ingrese el nombre del estudiante: ");
         String nombre = sc.nextLine();
 
-        System.out.print("Ingrese la edad del estudiante: ");
+        System.out.println("Ingrese la edad del estudiante: ");
         int edad = sc.nextInt();
 
-        Estudiante estudiante = new Estudiante(nombre, edad);
+        Estudiante estudiante = new Estudiante(id, nombre, edad);
 
         controlador.agregarEstudiante(estudiante);  
         controlador.actualizarVista();              

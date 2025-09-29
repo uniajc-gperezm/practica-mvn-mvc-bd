@@ -7,7 +7,7 @@ public class VistaEstudiante {
     public void mostrarDetallesEstudiante(List<Estudiante> estudiantes) {
       
         estudiantes.forEach(estudiante -> {
-            System.out.println("Nombre: " + estudiante.getNombre() + " - " + "Edad: " + estudiante.getEdad());
+            System.out.println("Id: " + estudiante.getId() + "Nombre: " + estudiante.getNombre() + " - " + "Edad: " + estudiante.getEdad());
         });
     }
 }

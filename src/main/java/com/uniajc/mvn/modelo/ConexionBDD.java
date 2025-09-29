@@ -23,9 +23,7 @@ public class ConexionBDD {
       Properties properties = new Properties();
 
       try {
-        // Cargar el driver JDBC
         Class.forName("com.mysql.cj.jdbc.Driver");
-
         properties.load(new FileInputStream(new File("config.properties")));
 
         // Configurar los parámetros de conexión
@@ -36,16 +34,16 @@ public class ConexionBDD {
         // Establecer la conexión
         connection = DriverManager.getConnection(url, username, password);
 
-        System.out.println("Conexión exitosa a la base de datos.");
+        System.out.println("La conexion con la base de datos a sido exitosa!!!");
 
       } catch (ClassNotFoundException e) {
         System.out.println("Error al cargar el driver JDBC: " + e.getMessage());
       } catch (SQLException e) {
-        System.out.println("Error al conectar a la base de datos: " + e.getMessage());
+        System.out.println("Error al conectar a la base de datos, por favor verifica!!: " + e.getMessage());
       } catch (FileNotFoundException e) {
         e.printStackTrace();
       } catch (IOException e) {
-       
+
         e.printStackTrace();
       }
     }

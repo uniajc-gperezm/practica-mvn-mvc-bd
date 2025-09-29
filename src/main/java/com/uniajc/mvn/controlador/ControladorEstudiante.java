@@ -28,14 +28,16 @@ public class ControladorEstudiante {
     }
 
     public static void guardarEnBD(Estudiante estudiante) {
-    String sql = "INSERT INTO estudiante (nombre, edad) VALUES (?, ?)";
+    String sql = "INSERT INTO estudiante (Id, nombre, edad) VALUES (?,?,?)";
     try (Connection conn = ConexionBDD.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        stmt.setString(1, estudiante.getNombre());
-        stmt.setInt(2, estudiante.getEdad());
+        stmt.setInt(1, estudiante.getId());
+        stmt.setString(2, estudiante.getNombre());
+        stmt.setInt(3, estudiante.getEdad());
         stmt.executeUpdate();
         System.out.println("Los datos del estudiante " + estudiante.getNombre() + "han sido guardado en la BDD");
+
     } catch (Exception ex) {
         ex.printStackTrace();
     }
