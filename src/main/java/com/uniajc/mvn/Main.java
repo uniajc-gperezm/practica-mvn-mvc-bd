@@ -12,14 +12,14 @@ public class Main {
         Connection conexion = ConexionBDD.getConnection();
 
 
-        /*Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         VistaEstudiante vista = new VistaEstudiante();
-        ControladorEstudiante controlador = new ControladorEstudiante(new Estudiante(0,"", 0), vista);
+        ControladorEstudiante controlador = new ControladorEstudiante(new Estudiante( "", 0), vista);
 
         //Para el Id del Estudiante
-        System.out.println("Ingrese el id del estudiante: ");
+        /*System.out.println("Ingrese el id del estudiante: ");
         int id = sc.nextInt();
-        sc.nextLine();
+        sc.nextLine();*/
 
         //Para el nombre del estudiante
         System.out.println("Ingrese el nombre del estudiante: ");
@@ -30,13 +30,13 @@ public class Main {
         int edad = sc.nextInt();
 
 
-        Estudiante estudiante = new Estudiante(id, nombre, edad);
+        Estudiante estudiante = new Estudiante(nombre, edad);
 
         //Llamar metodos
         controlador.agregarEstudiante(estudiante);  
         controlador.actualizarVista();    
         
                             
-        sc.close();*/
+        sc.close();
     }
 }

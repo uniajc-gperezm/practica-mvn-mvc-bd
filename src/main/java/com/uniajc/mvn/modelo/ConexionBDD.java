@@ -22,7 +22,7 @@ public class ConexionBDD {
       Properties properties = new Properties();
 
       try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("org.postgresql.Driver");
         properties.load(new FileInputStream(new File("config.properties")));
 
         //Par hacer la conexion a la BDD
