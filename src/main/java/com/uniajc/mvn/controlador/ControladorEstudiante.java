@@ -17,10 +17,27 @@ public class ControladorEstudiante {
   }
 
   public void actualizarVista() {
+    List<Estudiante> estudiantes = listarTodosLosEstudiantes();
     vista.mostrarDetallesEstudiante(estudiantes);
   }
 
   public void agregarEstudiante(Estudiante estudiante) {
-    this.estudiantes.add(estudiante);
+    Estudiante.insertarEstudiante(estudiante);
+    System.out.println("Estudiante agregado: " + estudiante.getNombre());
   }
+
+   public List<Estudiante> listarTodosLosEstudiantes() {
+    return Estudiante.obtenerTodosLosEstudiantes();
+  }
+
+  public void actualizarEstudiante(Estudiante estudiante) {
+   Estudiante.actualizarEstudiante(estudiante);
+    System.out.println("Estudiante actualizado: " + estudiante.getNombre());
+  }
+
+  public void eliminarEstudiante(Estudiante estudiante) {
+    Estudiante.eliminarEstudiante(estudiante.getNombre());
+    System.out.println("Estudiante eliminado: " + estudiante.getNombre());
+  }
+
 }

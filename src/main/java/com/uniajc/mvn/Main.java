@@ -13,10 +13,27 @@ public class Main {
 
     Connection conexion = ConexionDatabase.getConnection();
 
-    // Scanner scanner = new Scanner(System.in);
-    // Estudiante modelo = new Estudiante("", 0);
-    // VistaEstudiante vista = new VistaEstudiante();
-    // ControladorEstudiante controlador = new ControladorEstudiante(modelo, vista);
+    Scanner scanner = new Scanner(System.in);
+    Estudiante estudiante = new Estudiante();
+     estudiante.setNombre("Valeri 2");
+     estudiante.setEdad(22);
+
+    VistaEstudiante vista = new VistaEstudiante();
+    ControladorEstudiante controlador = new ControladorEstudiante(estudiante, vista);
+
+     controlador.agregarEstudiante(estudiante);
+     controlador.actualizarVista();
+
+    // estudiante.setNombre("valeri 2");
+    //estudiante.setEdad(22); // Nueva edad
+    //controlador.actualizarEstudiante(estudiante);
+
+    //System.out.print("Ingrese el nombre del estudiante a eliminar: ");
+    //String nombreEliminar = scanner.nextLine();
+
+    //Estudiante estudianteEliminar = new Estudiante();
+    //estudianteEliminar.setNombre(nombreEliminar);
+    //controlador.eliminarEstudiante(estudiante);
 
     // System.out.print("Ingrese el nombre del estudiante: ");
     // String nombre = scanner.nextLine();
