@@ -76,7 +76,7 @@ public class Main {
                 System.out.println("Opción no válida. Verifica !!");
         }
 
-    } while (opcion != 4);
+    } while (opcion != 5);
 
     sc.close();
     }
