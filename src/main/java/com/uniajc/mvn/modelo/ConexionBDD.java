@@ -16,12 +16,13 @@ public class ConexionBDD {
   public static Connection getConnection() {
 
     System.out.println("Intentando conectar a la base de datos...");
-
-    if (connection == null) {
+    
+    try {
+    if (connection == null || connection.isClosed()) {
 
       Properties properties = new Properties();
 
-      try {
+      
         Class.forName("org.postgresql.Driver");
         properties.load(new FileInputStream(new File("config.properties")));
 
@@ -35,7 +36,7 @@ public class ConexionBDD {
         
         //Mensaje de conexion Exitosa
         System.out.println("La conexion con la base de datos a sido exitosa!!!");
-
+    }
       } catch (ClassNotFoundException e) {
         System.out.println("Error al cargar el driver JDBC: " + e.getMessage());
       } catch (SQLException e) {
@@ -46,10 +47,12 @@ public class ConexionBDD {
 
         e.printStackTrace();
       }
-    }
+    
     return connection;
   }
-  
+
+
+
   public static void closeConnection() {
     if (connection != null) {
       try {
