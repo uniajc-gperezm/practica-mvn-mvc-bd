@@ -24,6 +24,14 @@ public class Main {
     controlador.agregarEstudiante(estudiante);
     controlador.actualizarVista();
 
+    //Estudiantes para actualizar
+    Estudiante estudianteActualizado = new Estudiante();
+    estudianteActualizado.setNombre("Jaime Araujo");
+    estudianteActualizado.setEdad(23);
+    
+    controlador.actualizarEstudiante("Leonel Messi", estudianteActualizado);
+    controlador.actualizarVista();
+
     // System.out.print("Ingrese el nombre del estudiante: ");
     // String nombre = scanner.nextLine();
 

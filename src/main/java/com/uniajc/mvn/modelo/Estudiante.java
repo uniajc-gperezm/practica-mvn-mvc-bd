@@ -55,7 +55,28 @@ public class Estudiante {
       System.out.println("Error al insertar el estudiante: " + e.getMessage());
       e.printStackTrace();
     }
+    }
 
+      // método para actualizar un estudiante en PostgreSQL
+  public static void actualizarEstudiante(String nombreViejo, Estudiante estudiante) {
+    String sql = "UPDATE estudiante SET nombre = ?, edad = ? WHERE nombre = ?";
+    try {
+      Connection conexion = ConexionDatabase.getConnection();
+      PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+      preparedStatement.setString(1, estudiante.getNombre());
+      preparedStatement.setInt(2, estudiante.getEdad());
+      preparedStatement.setString(3, nombreViejo);
+
+      int filas = preparedStatement.executeUpdate();
+      if (filas > 0) {
+        System.out.println("Estudiante actualizado correctamente.");
+      } else {
+        System.out.println("No se encontró estudiante con ese nombre.");
+      }
+    } catch (Exception e) {
+      System.out.println("Error al actualizar el estudiante: " + e.getMessage());
+      e.printStackTrace();
+    }
   }
 
   public static List<Estudiante> obtenerTodosLosEstudiantes() {

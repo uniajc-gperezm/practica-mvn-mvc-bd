@@ -26,8 +26,13 @@ public class ControladorEstudiante {
     System.out.println("Estudiante agregado: " + estudiante.getNombre());
   }
 
+  //método para actualizar un estudiante en PostgreSQL
+  public void actualizarEstudiante(String nombreViejo, Estudiante estudiante) {
+    Estudiante.actualizarEstudiante(nombreViejo, estudiante);
+    System.out.println("Estudiante actualizado a: " + estudiante.getNombre());
+  }
+
   public List<Estudiante> listarTodosLosEstudiantes() {
     return Estudiante.obtenerTodosLosEstudiantes();
   }
-
 }
