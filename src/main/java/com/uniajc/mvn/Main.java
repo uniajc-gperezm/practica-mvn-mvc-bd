@@ -16,10 +16,6 @@ public class Main {
         VistaEstudiante vista = new VistaEstudiante();
         ControladorEstudiante controlador = new ControladorEstudiante(new Estudiante( "", 0), vista);
 
-        //Para el Id del Estudiante
-        /*System.out.println("Ingrese el id del estudiante: ");
-        int id = sc.nextInt();
-        sc.nextLine();*/
 
         //Para el nombre del estudiante
         System.out.println("Ingrese el nombre del estudiante: ");
