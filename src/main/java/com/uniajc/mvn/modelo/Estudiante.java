@@ -8,17 +8,28 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Estudiante {
+  private int id;
   private String nombre;
   private int edad;
 
   public Estudiante() {
+    this.id = 0;
     this.nombre = "";
     this.edad = 0;
   }
 
-  public Estudiante(String nombre, int edad) {
+  public Estudiante(int id, String nombre, int edad) {
+    this.id = id;
     this.nombre = nombre;
     this.edad = edad;
+  }
+
+  public int getId() {
+    return this.id;
+  }
+  
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getNombre() {
@@ -79,6 +90,26 @@ public class Estudiante {
     }
   }
 
+  // método para eliminar un estudiante en PostgreSQL
+  
+public static void eliminarEstudiante(int id) {
+  String sql = "DELETE FROM estudiante WHERE id = ?";
+  try (Connection conexion = ConexionDatabase.getConnection()) {
+    PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+    preparedStatement.setInt(1, id);
+
+    int filas = preparedStatement.executeUpdate();
+    if (filas > 0) {
+      System.out.println("Estudiante eliminado correctamente.");
+    } else {
+      System.out.println("No se encontro estudiante con ese ID.");
+    }
+  } catch (Exception e) {
+    System.out.println("Error al eliminar el estudiante: " + e.getMessage());
+    e.printStackTrace();
+  }
+}
+
   public static List<Estudiante> obtenerTodosLosEstudiantes() {
 
     List<Estudiante> estudiantes = new ArrayList<>();
@@ -94,9 +125,10 @@ public class Estudiante {
       ResultSet resultSet = statement.executeQuery(sql);
 
       while (resultSet.next()) {
+        int id = resultSet.getInt("id");
         String nombre = resultSet.getString("nombre");
         int edad = resultSet.getInt("edad");
-        Estudiante estudiante = new Estudiante(nombre, edad);
+        Estudiante estudiante = new Estudiante(id, nombre, edad);
         estudiantes.add(estudiante);
       }
 

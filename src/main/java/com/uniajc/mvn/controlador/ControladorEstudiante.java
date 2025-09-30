@@ -32,6 +32,12 @@ public class ControladorEstudiante {
     System.out.println("Estudiante actualizado a: " + estudiante.getNombre());
   }
 
+  //metodo para eliminar un estudiante en PostgreSQL
+ public void eliminarEstudiante(int id) {
+  Estudiante.eliminarEstudiante(id);
+  System.out.println("Estudiante con ID " + id + " eliminado.");
+}
+
   public List<Estudiante> listarTodosLosEstudiantes() {
     return Estudiante.obtenerTodosLosEstudiantes();
   }

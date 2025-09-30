@@ -32,6 +32,10 @@ public class Main {
     controlador.actualizarEstudiante("Leonel Messi", estudianteActualizado);
     controlador.actualizarVista();
 
+    // Estudiante a eliminar
+    controlador.eliminarEstudiante(22);
+    controlador.actualizarVista();
+
     // System.out.print("Ingrese el nombre del estudiante: ");
     // String nombre = scanner.nextLine();
 
