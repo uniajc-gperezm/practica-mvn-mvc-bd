@@ -26,7 +26,7 @@ public class ConexionDatabase {
         // Cargar el driver JDBC
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        properties.load(new FileInputStream(new File("config.properties")));
+  properties.load(new FileInputStream(new File("configure.properties")));
 
         // Configurar los parámetros de conexión
         String url = properties.get("URL").toString();
