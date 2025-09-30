@@ -14,9 +14,15 @@ public class Main {
     Connection conexion = ConexionDatabase.getConnection();
 
     // Scanner scanner = new Scanner(System.in);
-    // Estudiante modelo = new Estudiante("", 0);
-    // VistaEstudiante vista = new VistaEstudiante();
-    // ControladorEstudiante controlador = new ControladorEstudiante(modelo, vista);
+    Estudiante estudiante = new Estudiante();
+    estudiante.setNombre("Leonel Messi");
+    estudiante.setEdad(38);
+
+    VistaEstudiante vista = new VistaEstudiante();
+    ControladorEstudiante controlador = new ControladorEstudiante(estudiante, vista);
+
+    controlador.agregarEstudiante(estudiante);
+    controlador.actualizarVista();
 
     // System.out.print("Ingrese el nombre del estudiante: ");
     // String nombre = scanner.nextLine();
