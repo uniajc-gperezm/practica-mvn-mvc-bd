@@ -12,7 +12,7 @@ public class Main {
         Connection conexion = ConexionBDD.getConnection();
 
 
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
         VistaEstudiante vista = new VistaEstudiante();
         ControladorEstudiante controlador = new ControladorEstudiante(new Estudiante(0,"", 0), vista);
 
@@ -37,6 +37,6 @@ public class Main {
         controlador.actualizarVista();    
         
                             
-        sc.close();
+        sc.close();*/
     }
 }
