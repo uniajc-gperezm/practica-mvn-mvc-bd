@@ -10,6 +10,14 @@ import java.util.ArrayList;
 public class Estudiante {
   private String nombre;
   private int edad;
+  private int id;
+
+
+  
+
+  public Estudiante(int id) {
+    this.id = id;
+  }
 
   public Estudiante() {
     this.nombre = "";
@@ -58,6 +66,43 @@ public class Estudiante {
 
   }
 
+  public static void actualizarEstudiante(Estudiante estudiante) {
+    
+    String sql = "UPDATE estudiante SET nombre = ?, edad = ? WHERE id = ?";
+
+    try {
+        Connection conexion = ConexionDatabase.getConnection();
+        PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+
+        preparedStatement.setString(1, estudiante.getNombre());
+        preparedStatement.setInt(2, estudiante.getEdad());
+        preparedStatement.setInt(3, estudiante.getId()); 
+        preparedStatement.executeUpdate();
+
+    } catch (Exception e) {
+        System.out.println("Error al actualizar el estudiante: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+
+    public static void eliminarEstudiante(int id) {
+    String sql = "DELETE FROM estudiante WHERE id = ?";
+
+    try {
+        Connection conexion = ConexionDatabase.getConnection();
+        PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+
+    } catch (Exception e) {
+        System.out.println("Error al eliminar el estudiante: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+
+
+
   public static List<Estudiante> obtenerTodosLosEstudiantes() {
 
     List<Estudiante> estudiantes = new ArrayList<>();
@@ -85,6 +130,14 @@ public class Estudiante {
     }
 
     return estudiantes;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
 }

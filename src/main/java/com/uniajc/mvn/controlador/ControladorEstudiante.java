@@ -26,6 +26,17 @@ public class ControladorEstudiante {
     System.out.println("Estudiante agregado: " + estudiante.getNombre());
   }
 
+  public void actualizarEstudiante(Estudiante estudiante) {
+    Estudiante.actualizarEstudiante(estudiante);
+    System.out.println("Estudiante agregado: " + estudiante.getNombre());
+  }
+
+  public void eliminarEstudiante(Estudiante estudiante) {
+    Estudiante.eliminarEstudiante(estudiante.getId());
+    System.out.println("Estudiante eliminado: " + estudiante.getNombre());
+}
+
+
   public List<Estudiante> listarTodosLosEstudiantes() {
     return Estudiante.obtenerTodosLosEstudiantes();
   }
