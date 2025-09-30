@@ -2,6 +2,9 @@ package com.uniajc.mvn.modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.swing.JOptionPane;
 
 public class Estudiante {
     private int id;
@@ -54,6 +57,8 @@ public class Estudiante {
         ex.printStackTrace();
         }
     }
+
+    
 
     
 }
