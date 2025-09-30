@@ -17,10 +17,17 @@ public class ControladorEstudiante {
   }
 
   public void actualizarVista() {
+    List<Estudiante> estudiantes = listarTodosLosEstudiantes();
     vista.mostrarDetallesEstudiante(estudiantes);
   }
 
   public void agregarEstudiante(Estudiante estudiante) {
-    this.estudiantes.add(estudiante);
+    Estudiante.insertarEstudiante(estudiante);
+    System.out.println("Estudiante agregado: " + estudiante.getNombre());
   }
+
+  public List<Estudiante> listarTodosLosEstudiantes() {
+    return Estudiante.obtenerTodosLosEstudiantes();
+  }
+
 }
