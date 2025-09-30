@@ -30,8 +30,8 @@ public class ControladorEstudiante {
 //     return Estudiante.obtenerTodosLosEstudiantes();
 //   }
 
-public void eliminarEstudiante(int id) {
-    Estudiante.eliminarEstudiantePorId(id);
+public void eliminarEstudiante(Estudiante estudiante) {
+    Estudiante.eliminarEstudiantePorId(estudiante);
 }
 
 public void actualizarEstudiante(int id, String nombre, int edad) {
@@ -48,6 +48,11 @@ public List<Estudiante> buscarEstudiantesPorEdad(int edad) {
 
 public Estudiante buscarEstudiantePorId(int id) {
     return Estudiante.buscarPorId(id);
+}
+
+public List<Estudiante> listarTodosLosEstudiantes() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'listarTodosLosEstudiantes'");
 }
 
 }

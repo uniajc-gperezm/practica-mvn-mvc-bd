@@ -8,17 +8,34 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Estudiante {
+  private int id;
   private String nombre;
   private int edad;
 
   public Estudiante() {
+    this.id = 0;
     this.nombre = "";
     this.edad = 0;
   }
 
   public Estudiante(String nombre, int edad) {
+    this.id = 0;
     this.nombre = nombre;
     this.edad = edad;
+  }
+
+  public Estudiante(int id, String nombre, int edad) {
+    this.id = id;
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+
+  public int getId() {
+    return this.id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getNombre() {
@@ -69,16 +86,16 @@ public class Estudiante {
 
   //     Statement statement = conexion.createStatement();
 
-  //     // Ejecutar la sentencias SQL SELECT
-  //     ResultSet resultSet = statement.executeQuery(sql);
-
-  //     while (resultSet.next()) {
-  //       String nombre = resultSet.getString("nombre");
-  //       int edad = resultSet.getInt("edad");
-  //       Estudiante estudiante = new Estudiante(nombre, edad);
-  //       estudiantes.add(estudiante);
-  //     }
-
+    public static void eliminarEstudiantePorId(Estudiante estudiante) {
+    String sql = "DELETE FROM estudiante WHERE id = ?";
+    try (Connection conexion = ConexionDatabase.getConnection();
+         PreparedStatement ps = conexion.prepareStatement(sql)) {
+        ps.setInt(1, estudiante.getId());
+        ps.executeUpdate();
+    } catch (Exception e) {
+        System.out.println("Error al eliminar el estudiante: " + e.getMessage());
+    }
+}
   //   } catch (Exception e) {
   //     System.out.println("Error al insertar el estudiante: " + e.getMessage());
   //     e.printStackTrace();
@@ -86,16 +103,16 @@ public class Estudiante {
 
   //   return estudiantes;
 
-    public static void eliminarEstudiantePorId(int id) {
-    String sql = "DELETE FROM estudiante WHERE id = ?";
-    try (Connection conexion = ConexionDatabase.getConnection();
-         PreparedStatement ps = conexion.prepareStatement(sql)) {
-        ps.setInt(1, id);
-        ps.executeUpdate();
-    } catch (Exception e) {
-        System.out.println("Error al eliminar el estudiante: " + e.getMessage());
-    }
-}
+//     public static void eliminarEstudiantePorId(Estudiante estudiante) {
+//     String sql = "DELETE FROM estudiante WHERE id = ?";
+//     try (Connection conexion = ConexionDatabase.getConnection();
+//          PreparedStatement ps = conexion.prepareStatement(sql)) {
+//         ps.setNString(1, estudiante);
+//         ps.executeUpdate();
+//     } catch (Exception e) {
+//         System.out.println("Error al eliminar el estudiante: " + e.getMessage());
+//     }
+// }
 
 public static void actualizarEstudiantePorId(int id, String nombre, int edad) {
     String sql = "UPDATE estudiante SET nombre = ?, edad = ? WHERE id = ?";
@@ -156,4 +173,5 @@ public static Estudiante buscarPorId(int id) {
     }
     return null;
 }
+
   }
