@@ -44,8 +44,8 @@ public class ControladorEstudiante {
         modelo.actualizarEstudiante(estudianteActualizado);
     }
 
-    public void buscarEstudianteDBBD (String nombre){
-        modelo.buscarEstudiante(nombre);
+    public void buscarEstudianteDBB (int id){
+        modelo.buscarEstudiante(id);
     }
 
 

@@ -67,8 +67,8 @@ public class VistaEstudiante {
                 break;
             case 5:
                 System.out.print("Ingrese el nombre del estudiante a buscar: ");
-                String nombreBuscar = sc.nextLine();
-                controlador.buscarEstudianteDBBD(nombreBuscar);
+                int id = sc.nextInt();
+                controlador.buscarEstudianteDBB(id);
                 break;
             case 6:
                 System.out.println("Saliendo del programa...");
