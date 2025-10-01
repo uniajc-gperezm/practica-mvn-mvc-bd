@@ -36,7 +36,7 @@ public class ControladorEstudiante {
  public void eliminarEstudiante(int id) {
   Estudiante.eliminarEstudiante(id);
   System.out.println("Estudiante con ID " + id + " eliminado.");
-}
+} 
 
   public List<Estudiante> listarTodosLosEstudiantes() {
     return Estudiante.obtenerTodosLosEstudiantes();
