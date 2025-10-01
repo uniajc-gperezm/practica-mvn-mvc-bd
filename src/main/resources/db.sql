@@ -34,7 +34,7 @@ CREATE TABLE `estudiante` (
 
 LOCK TABLES `estudiante` WRITE;
 /*!40000 ALTER TABLE `estudiante` DISABLE KEYS */;
-INSERT INTO `estudiante` VALUES ('Gabriel',30);
+INSERT INTO `estudiante` VALUES ('JUAN ALMENDRA',24);
 /*!40000 ALTER TABLE `estudiante` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
