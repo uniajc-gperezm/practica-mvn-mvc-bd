@@ -22,7 +22,7 @@ public class VistaEstudiante {
         System.out.println("2. Listar todos los estudiantes");
         System.out.println("3. Eliminar estudiante");
         System.out.println("4. Actualizar datos del estudiante");
-        System.out.println("5. Buscar estudiante por Nombre");
+        System.out.println("5. Buscar estudiante por Id");
         System.out.println("6. Salir del programa");
         
         System.out.print("Seleccione una de las opción que desea realizar: ");
