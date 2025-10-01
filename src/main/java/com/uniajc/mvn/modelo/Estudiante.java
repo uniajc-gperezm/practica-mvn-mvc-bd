@@ -106,4 +106,23 @@ public class Estudiante {
         }
     }
 
+    public static void buscarEstudiante(String nombre) {
+        String sql = "SELECT nombre, edad FROM estudiante WHERE nombre = ?";
+        try (Connection conn = ConexionBDD.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, nombre);
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                String nombreEstudiante = resultSet.getString("nombre");
+                int edad = resultSet.getInt("edad");
+                System.out.println("Nombre: " + nombreEstudiante + ", Edad: " + edad);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

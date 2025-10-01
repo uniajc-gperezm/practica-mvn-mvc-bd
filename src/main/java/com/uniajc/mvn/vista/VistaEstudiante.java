@@ -22,7 +22,8 @@ public class VistaEstudiante {
         System.out.println("2. Listar todos los estudiantes");
         System.out.println("3. Eliminar estudiante");
         System.out.println("4. Actualizar datos del estudiante");
-        System.out.println("5. Salir del programa");
+        System.out.println("5. Buscar estudiante por Nombre");
+        System.out.println("6. Salir del programa");
         
         System.out.print("Seleccione una de las opción que desea realizar: ");
         opcion = sc.nextInt();
@@ -64,8 +65,12 @@ public class VistaEstudiante {
                 controlador.actualizarDatosEstudiante(estudianteActualizado);
                 System.out.println("Los datos del estudiante han sido actualizados en la BDD.");
                 break;
-
             case 5:
+                System.out.print("Ingrese el nombre del estudiante a buscar: ");
+                String nombreBuscar = sc.nextLine();
+                controlador.buscarEstudianteDBBD(nombreBuscar);
+                break;
+            case 6:
                 System.out.println("Saliendo del programa...");
                 break;
 
@@ -73,7 +78,7 @@ public class VistaEstudiante {
                 System.out.println("Opción no válida. Verifica !!");
         }
 
-    } while (opcion != 5);
+    } while (opcion != 6);
 
     sc.close();
     }
