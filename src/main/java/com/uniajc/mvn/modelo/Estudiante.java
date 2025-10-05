@@ -78,7 +78,7 @@ public class Estudiante {
         return estudiantes;
     }
 
-    public static void eliminarEstudiante(String nombre) {
+    /*public static void eliminarEstudiante(String nombre) {
     String sql = "DELETE FROM estudiante WHERE nombre = ?";
     try (Connection conn = ConexionBDD.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -89,6 +89,19 @@ public class Estudiante {
 
         } catch (Exception ex) {
         ex.printStackTrace();
+        }
+    }*/
+
+    public static void eliminarEstudiantes(int id){
+        String sql = "DELETE FROM estudiante WHERE id = ?";
+        try (Connection conn = ConexionBDD.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -105,6 +118,8 @@ public class Estudiante {
             ex.printStackTrace();
         }
     }
+
+
 
     public static void buscarEstudiante(int id) {
         String sql = "SELECT nombre, edad FROM estudiante WHERE id = ?";

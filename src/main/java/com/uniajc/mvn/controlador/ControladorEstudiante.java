@@ -36,8 +36,8 @@ public class ControladorEstudiante {
         return Estudiante.obtenerTodosLosEstudiantes();
     }
 
-    public void removerEstudiante (String nombre){
-        modelo.eliminarEstudiante(nombre);    
+    public void removerEstudiante (int id){
+        modelo.eliminarEstudiantes(id);    
     }
 
     public void actualizarDatosEstudiante (Estudiante estudianteActualizado){

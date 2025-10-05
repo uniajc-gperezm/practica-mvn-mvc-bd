@@ -47,9 +47,9 @@ public class VistaEstudiante {
                 controlador.actualizarVista();
                 break;
             case 3:
-                System.out.print("Ingrese el nombre del estudiante a eliminar: ");
-                String nombreEliminar = sc.nextLine();
-                controlador.removerEstudiante(nombreEliminar);
+                System.out.print("Ingrese el id del estudiante a eliminar: ");
+                int id = sc.nextInt();
+                controlador.removerEstudiante(id);
                 System.out.println("El estudiante ha sido eliminado de la BDD.");
                 break;
 
@@ -67,8 +67,8 @@ public class VistaEstudiante {
                 break;
             case 5:
                 System.out.print("Ingrese el nombre del estudiante a buscar: ");
-                int id = sc.nextInt();
-                controlador.buscarEstudianteDBB(id);
+                int idEliminar = sc.nextInt();
+                controlador.buscarEstudianteDBB(idEliminar);
                 break;
             case 6:
                 System.out.println("Saliendo del programa...");
