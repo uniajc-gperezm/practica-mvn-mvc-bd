@@ -1,22 +1,23 @@
 package com.uniajc.mvn;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Scanner;
-import com.uniajc.mvn.controlador.ControladorEstudiante;
-import com.uniajc.mvn.modelo.ConexionBDD;
-import com.uniajc.mvn.modelo.Estudiante;
-import com.uniajc.mvn.vista.VistaEstudiante;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.application.Application;
 
-public class Main {
+public class Main extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/CRUDEstudiantes.fxml"));
+        final Scene scene = new Scene(fxmlLoader.load());
+
+        stage.setScene(scene);
+        stage.setTitle("Estudiantes");
+        stage.show();
+    }
+
     public static void main(String[] args)  {
-
-        Connection conexion = ConexionBDD.getConnection();
-
-        VistaEstudiante vista = new VistaEstudiante();
-        ControladorEstudiante controlador = new ControladorEstudiante(new Estudiante("", 0), vista);
-        
-        vista.menu(controlador);
-          
-     }
+        launch();
+    }
 }

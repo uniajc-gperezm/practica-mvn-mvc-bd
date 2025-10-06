@@ -1,23 +1,33 @@
 package com.uniajc.mvn.modelo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-
-//import com.mysql.cj.xdevapi.Statement;
+import java.sql.Connection;
+import javafx.scene.control.Alert;
+import java.sql.PreparedStatement;
+import com.uniajc.mvn.services.ConexionBDD;
 
 public class Estudiante {
 
+    private int id;
     private String nombre;
     private int edad;
+    final private static Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
+    final private static Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
-    public Estudiante(String nombre, int edad) {
-
+    public Estudiante(int id, String nombre, int edad) {
+        this.id = id;
         this.nombre = nombre;
         this.edad = edad;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -36,108 +46,87 @@ public class Estudiante {
         this.edad = edad;
     }
 
-    public static void insertarEstudiante(Estudiante estudiante) {
-        String sql = "INSERT INTO estudiante (nombre, edad) VALUES (?,?)";
-        try (Connection conn = ConexionBDD.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
+    public static void registrarEstudiante(String nombre, int edad) {
+        String sql = "INSERT INTO estudiante (nombre, edad) VALUES (?, ?)";
 
-            stmt.setString(1, estudiante.getNombre());
-            stmt.setInt(2, estudiante.getEdad());
-            stmt.executeUpdate();
+        try {
+            Connection connection = ConexionBDD.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setInt(2, edad);
+            preparedStatement.executeUpdate();
+
+            confirmationAlert.setTitle("Éxito");
+            confirmationAlert.setContentText("Registro exitoso.");
+            confirmationAlert.show();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            errorAlert.setTitle("Error");
+            errorAlert.setContentText("No fue posible registrar el estudiante.");
+            errorAlert.show();
         }
     }
 
-    public static List<Estudiante> obtenerTodosLosEstudiantes() {
-
-        List<Estudiante> estudiantes = new ArrayList<>();
-
-        String sql = "SELECT nombre, edad FROM estudiante";
+    public static ArrayList<Estudiante> obtenerEstudiantes() {
+        String sql = "SELECT id, nombre, edad FROM estudiante";
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
 
         try {
-            Connection conexion = ConexionBDD.getConnection();
-
-            Statement statement = conexion.createStatement();
-
+            Connection connection = ConexionBDD.getConnection();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                String nombre = resultSet.getString("nombre");
-                int edad = resultSet.getInt("edad");
-                Estudiante estudiante = new Estudiante(nombre, edad);
+                Estudiante estudiante = new Estudiante(resultSet.getInt("id"), resultSet.getString("nombre"), resultSet.getInt("edad"));
                 estudiantes.add(estudiante);
             }
-
         } catch (Exception e) {
-            System.out.println("Error al insertar el estudiante: " + e.getMessage());
-            e.printStackTrace();
+            errorAlert.setTitle("Error");
+            errorAlert.setContentText("No fue posible obtener los estudiantes.");
+            errorAlert.show();
         }
 
         return estudiantes;
     }
 
-    /*public static void eliminarEstudiante(String nombre) {
-    String sql = "DELETE FROM estudiante WHERE nombre = ?";
-    try (Connection conn = ConexionBDD.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(sql)) {
+    public static void actualizarEstudiante(int id, String nombre, int edad) {
+        String sql = "UPDATE estudiante SET nombre = ?, edad = ? WHERE id = ?";
 
-        stmt.setString(1, nombre);
-        stmt.executeUpdate();
-        
+        try {
+            Connection connection = ConexionBDD.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setInt(2, edad);
+            preparedStatement.setInt(3, id);
+            preparedStatement.executeUpdate();
+
+            confirmationAlert.setTitle("Éxito");
+            confirmationAlert.setContentText("Actualización exitosa.");
+            confirmationAlert.show();
         } catch (Exception ex) {
-        ex.printStackTrace();
+            errorAlert.setTitle("Error");
+            errorAlert.setContentText("No fue posible actualizar la información el estudiante.");
+            errorAlert.show();
         }
-    }*/
+    }
 
     public static void eliminarEstudiantes(int id){
         String sql = "DELETE FROM estudiante WHERE id = ?";
-        try (Connection conn = ConexionBDD.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
+        try (Connection connection = ConexionBDD.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+
+            confirmationAlert.setTitle("Éxito");
+            confirmationAlert.setContentText("Eliminación exitosa.");
+            confirmationAlert.show();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            errorAlert.setTitle("Error");
+            errorAlert.setContentText("No fue posible eliminar el estudiantes.");
+            errorAlert.show();
         }
     }
-
-    public static void actualizarEstudiante(Estudiante estudiante) {
-        String sql = "UPDATE estudiante SET edad = ? WHERE nombre = ?";
-        try (Connection conn = ConexionBDD.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, estudiante.getEdad());
-            stmt.setString(2, estudiante.getNombre());
-            stmt.executeUpdate();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-
-
-    public static void buscarEstudiante(int id) {
-        String sql = "SELECT nombre, edad FROM estudiante WHERE id = ?";
-        try (Connection conn = ConexionBDD.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, id);
-            ResultSet resultSet = stmt.executeQuery();
-
-            while (resultSet.next()) {
-                String nombreEstudiante = resultSet.getString("nombre");
-                int edad = resultSet.getInt("edad");
-                System.out.println("Nombre: " + nombreEstudiante + ", Edad: " + edad);
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
 }
