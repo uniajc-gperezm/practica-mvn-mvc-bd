@@ -24,7 +24,7 @@ public class CRUDEstudiantesController {
 
     @FXML void registrarEstudiante(ActionEvent event) {
         if (txtId.getText().isEmpty() && !txtNombre.getText().isEmpty() && !txtEdad.getText().isEmpty()) {
-            Estudiante.registrarEstudiante(txtNombre.getText(), Integer.parseInt(txtEdad.getText()));
+            AppServices.getEstudiante().registrarEstudiante(txtNombre.getText(), Integer.parseInt(txtEdad.getText()));
             actualizarTabla();
         } else if (txtNombre.getText().isEmpty() || txtEdad.getText().isEmpty()) {
             warningAlert.setContentText("Complete la información necesaria para registrar el estudiante.");
@@ -37,7 +37,7 @@ public class CRUDEstudiantesController {
 
     @FXML void actualizarEstudiante(ActionEvent event) {
         if (!txtId.getText().isEmpty()) {
-            Estudiante.actualizarEstudiante(Integer.parseInt(txtId.getText()), txtNombre.getText(), Integer.parseInt(txtEdad.getText()));
+            AppServices.getEstudiante().actualizarEstudiante(Integer.parseInt(txtId.getText()), txtNombre.getText(), Integer.parseInt(txtEdad.getText()));
             actualizarTabla();
         } else {
             warningAlert.setContentText("Seleccione un estudiante para actualizar.");
@@ -47,7 +47,7 @@ public class CRUDEstudiantesController {
 
     @FXML void eliminarEstudiante(ActionEvent event) {
         if (!txtId.getText().isEmpty()) {
-            Estudiante.eliminarEstudiantes(Integer.parseInt(txtId.getText()));
+            AppServices.getEstudiante().eliminarEstudiantes(Integer.parseInt(txtId.getText()));
             actualizarTabla();
         } else {
             warningAlert.setContentText("Seleccione un estudiante para eliminar.");
@@ -68,7 +68,7 @@ public class CRUDEstudiantesController {
 
     private void actualizarTabla() {
         tblEstudiantes.getItems().clear();
-        tblEstudiantes.getItems().addAll(AppServices.getEstudiantes());
+        tblEstudiantes.getItems().addAll(AppServices.getEstudiante());
     }
 
     public void initialize() {
@@ -78,7 +78,7 @@ public class CRUDEstudiantesController {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
 
-        tblEstudiantes.getItems().addAll(AppServices.getEstudiantes());
+        tblEstudiantes.getItems().addAll(AppServices.getEstudiante().obtenerEstudiantes());
         tblEstudiantes.getSelectionModel().selectedItemProperty().addListener((ignoredObservableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 txtId.setText(String.valueOf(tblEstudiantes.getSelectionModel().getSelectedItem().getId()));

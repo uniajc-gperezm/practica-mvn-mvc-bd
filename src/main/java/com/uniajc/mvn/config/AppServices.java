@@ -1,17 +1,12 @@
 package com.uniajc.mvn.config;
 
-import java.util.ArrayList;
 import com.uniajc.mvn.modelo.Estudiante;
 
 public class AppServices {
 
-    private static ArrayList<Estudiante> estudiantes;
+    private static final Estudiante ESTUDIANTE = new Estudiante();
 
-    static  {
-        estudiantes = Estudiante.obtenerEstudiantes();
-    }
-
-    public static ArrayList<Estudiante> getEstudiantes() {
-        return estudiantes = Estudiante.obtenerEstudiantes();
+    public static Estudiante getEstudiante() {
+        return ESTUDIANTE;
     }
 }

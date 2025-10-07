@@ -22,6 +22,10 @@ public class Estudiante {
         this.edad = edad;
     }
 
+    public Estudiante() {
+
+    }
+
     public int getId() {
         return id;
     }
@@ -46,7 +50,7 @@ public class Estudiante {
         this.edad = edad;
     }
 
-    public static void registrarEstudiante(String nombre, int edad) {
+    public void registrarEstudiante(String nombre, int edad) {
         String sql = "INSERT INTO estudiante (nombre, edad) VALUES (?, ?)";
 
         try {
@@ -67,7 +71,7 @@ public class Estudiante {
         }
     }
 
-    public static ArrayList<Estudiante> obtenerEstudiantes() {
+    public ArrayList<Estudiante> obtenerEstudiantes() {
         String sql = "SELECT id, nombre, edad FROM estudiante";
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
 
@@ -89,7 +93,7 @@ public class Estudiante {
         return estudiantes;
     }
 
-    public static void actualizarEstudiante(int id, String nombre, int edad) {
+    public void actualizarEstudiante(int id, String nombre, int edad) {
         String sql = "UPDATE estudiante SET nombre = ?, edad = ? WHERE id = ?";
 
         try {
@@ -111,7 +115,7 @@ public class Estudiante {
         }
     }
 
-    public static void eliminarEstudiantes(int id){
+    public void eliminarEstudiantes(int id){
         String sql = "DELETE FROM estudiante WHERE id = ?";
 
         try (Connection connection = ConexionBDD.getConnection();
