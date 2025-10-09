@@ -1,0 +1,5 @@
+com\uniajc\mvn\modelo\Estudiante.class
+com\uniajc\mvn\controlador\ControladorEstudiante.class
+com\uniajc\mvn\vista\VistaEstudiante.class
+com\uniajc\mvn\Main.class
+com\uniajc\mvn\modelo\ConexionDatabase.class
