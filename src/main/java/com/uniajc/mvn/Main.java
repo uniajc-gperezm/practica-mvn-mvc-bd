@@ -1,40 +1,16 @@
+
+// src/main/java/com/uniajc/mvn/Main.java
+// src/main/java/com/uniajc/mvn/Main.java
 package com.uniajc.mvn;
+// src/main/java/com/uniajc/mvn/Main.java
 
-
-
-import java.sql.Connection;
-import java.util.Scanner;
-
-import com.uniajc.mvn.controlador.ControladorEstudiante;
-import com.uniajc.mvn.modelo.ConexionDatabase;
-import com.uniajc.mvn.modelo.Estudiante;
-import com.uniajc.mvn.vista.VistaEstudiante;
+ 
+import com.uniajc.mvn.Vista.MainView; 
+import javax.swing.SwingUtilities;
 
 public class Main {
-  public static void main(String[] args) {
-
-    Connection conexion = ConexionDatabase.getConnection();
-
-    // Scanner scanner = new Scanner(System.in);
-    Estudiante estudiante = new Estudiante();
-    estudiante.setNombre("Leonel Messi");
-    estudiante.setEdad(38);
-
-    VistaEstudiante vista = new VistaEstudiante();
-    ControladorEstudiante controlador = new ControladorEstudiante(estudiante, vista);
-
-    controlador.agregarEstudiante(estudiante);
-    controlador.actualizarVista();
-
-    // System.out.print("Ingrese el nombre del estudiante: ");
-    // String nombre = scanner.nextLine();
-
-    // System.out.print("Ingrese la edad del estudiante: ");
-    // int edad = scanner.nextInt();
-
-    // Estudiante estudiante = new Estudiante(nombre, edad);
-    // controlador.agregarEstudiante(estudiante);
-    // controlador.actualizarVista();
-    // scanner.close();
-  }
+    public static void main(String[] args) {
+        // Lanza la vista principal en el hilo de eventos de Swing
+        SwingUtilities.invokeLater(MainView::new);
+    }
 }
