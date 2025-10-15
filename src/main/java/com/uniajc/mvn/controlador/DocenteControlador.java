@@ -1,6 +1,6 @@
-// src/main/java/com/uniajc/mvn/controlador/DocenteControlador.java
+
 package com.uniajc.mvn.controlador;
-// src/main/java/com/uniajc/mvn/controlador/DocenteControlador.java
+
 
 
 import com.uniajc.mvn.modelo.Docente;

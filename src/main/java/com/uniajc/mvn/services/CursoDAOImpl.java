@@ -1,7 +1,7 @@
-// src/main/java/com/uniajc/mvn/services/CursoDAOImpl.java
+
 package com.uniajc.mvn.services;
 
-// src/main/java/com/uniajc/mvn/services/CursoDAOImpl.java
+
 
 
 import com.uniajc.mvn.modelo.Curso;

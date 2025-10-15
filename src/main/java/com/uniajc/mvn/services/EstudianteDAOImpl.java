@@ -1,4 +1,4 @@
-// src/main/java/com/uniajc/mvn/services/EstudianteDAOImpl.java
+
 package com.uniajc.mvn.services;
 
 import com.uniajc.mvn.modelo.Estudiante;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class EstudianteDAOImpl implements EstudianteDAO {
 
-    // He movido aquí la lógica CRUD que estaba en tu modelo Estudiante.java
+    
     @Override
     public void registrar(Estudiante estudiante) {
         String sql = "INSERT INTO estudiante (nombre, edad) VALUES (?, ?)";

@@ -32,7 +32,7 @@ public class MainView extends JFrame {
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 14));
         add(welcomeLabel, BorderLayout.CENTER);
 
-        // 6. Configurar Eventos para abrir las ventanas CRUD (MODIFICADOS)
+        
         estudianteItem.addActionListener(this::abrirEstudianteView);
         docenteItem.addActionListener(this::abrirDocenteView);
         cursoItem.addActionListener(this::abrirCursoView);
@@ -40,11 +40,11 @@ public class MainView extends JFrame {
         setVisible(true);
     }
     
-    // Métodos para abrir las vistas (MODIFICADOS)
+    
     private void abrirEstudianteView(ActionEvent e) {
-        // 1. Oculta la ventana principal
+        
         this.setVisible(false); 
-        // 2. Crea la nueva vista pasándose a sí misma (this) como parámetro
+        
         new EstudianteView(this).setVisible(true);
     }
     

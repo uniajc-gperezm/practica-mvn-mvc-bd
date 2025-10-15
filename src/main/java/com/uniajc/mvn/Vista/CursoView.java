@@ -24,7 +24,7 @@ public class CursoView extends JFrame {
     
     private MainView mainView; 
 
-    // [CORRECCIÓN SUPER] Constructor vacío para compatibilidad
+    
     public CursoView() {
         super();
         tableModel = new DefaultTableModel(new String[]{"ID", "Nombre", "Notas"}, 0);
@@ -32,7 +32,7 @@ public class CursoView extends JFrame {
         initializeComponents(null);
     }
     
-    // Constructor con MainView
+    
     public CursoView(MainView mainView) {
         super("CRUD de Cursos - Swing");
         tableModel = new DefaultTableModel(new String[]{"ID", "Nombre", "Notas"}, 0);
@@ -88,7 +88,7 @@ public class CursoView extends JFrame {
     }
 
     private void configurarEventos() {
-        // Evento: Guardar Nuevo - Validación de Notas
+        
         btnGuardar.addActionListener(e -> {
             try {
                 String nombre = txtNombre.getText().trim();
@@ -111,7 +111,7 @@ public class CursoView extends JFrame {
             }
         });
 
-        // Evento: Actualizar - Validación de ID y Notas (Resuelve "For input string: "" en Actualizar)
+        
         btnActualizar.addActionListener(e -> {
             try {
                 String idText = txtId.getText().trim();
@@ -141,7 +141,7 @@ public class CursoView extends JFrame {
             }
         });
 
-        // Evento: Eliminar - Validación de ID (Resuelve "For input string: "" en Eliminar)
+       
         btnEliminar.addActionListener(e -> {
             try {
                 String idText = txtId.getText().trim();
@@ -164,7 +164,7 @@ public class CursoView extends JFrame {
             }
         });
         
-        // ... otros eventos
+    
         cursoTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && cursoTable.getSelectedRow() != -1) {
                 int selectedRow = cursoTable.getSelectedRow();

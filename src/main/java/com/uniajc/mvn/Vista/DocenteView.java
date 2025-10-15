@@ -24,7 +24,7 @@ public class DocenteView extends JFrame {
     
     private MainView mainView; 
 
-    // [CORRECCIÓN SUPER] Constructor vacío para compatibilidad
+    
     public DocenteView() {
         super();
         tableModel = new DefaultTableModel(new String[]{"ID", "Nombre", "Departamento"}, 0);
@@ -32,7 +32,7 @@ public class DocenteView extends JFrame {
         initializeComponents(null);
     }
     
-    // Constructor con MainView
+    
     public DocenteView(MainView mainView) {
         super("CRUD de Docentes - Swing");
         tableModel = new DefaultTableModel(new String[]{"ID", "Nombre", "Departamento"}, 0);
@@ -89,7 +89,7 @@ public class DocenteView extends JFrame {
     }
 
     private void configurarEventos() {
-        // Evento: Guardar Nuevo - Validación de campos
+        
         btnGuardar.addActionListener(e -> {
             try {
                 String nombre = txtNombre.getText().trim();
@@ -109,7 +109,7 @@ public class DocenteView extends JFrame {
             }
         });
 
-        // Evento: Actualizar - Validación de ID (Resuelve "For input string: "" en Actualizar)
+       
         btnActualizar.addActionListener(e -> {
             try {
                 String idText = txtId.getText().trim();
@@ -138,7 +138,7 @@ public class DocenteView extends JFrame {
             }
         });
 
-        // Evento: Eliminar - Validación de ID (Resuelve "For input string: "" en Eliminar)
+        
         btnEliminar.addActionListener(e -> {
             try {
                 String idText = txtId.getText().trim();
@@ -161,7 +161,7 @@ public class DocenteView extends JFrame {
             }
         });
         
-        // ... otros eventos
+        
         docenteTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && docenteTable.getSelectedRow() != -1) {
                 int selectedRow = docenteTable.getSelectedRow();

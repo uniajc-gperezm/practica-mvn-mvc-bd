@@ -1,7 +1,5 @@
-// src/main/java/com/uniajc/mvn/controlador/EstudianteControlador.java
-package com.uniajc.mvn.controlador;
 
-// src/main/java/com/uniajc/mvn/controlador/EstudianteControlador.java
+package com.uniajc.mvn.controlador;
 
 
 import com.uniajc.mvn.modelo.Estudiante;

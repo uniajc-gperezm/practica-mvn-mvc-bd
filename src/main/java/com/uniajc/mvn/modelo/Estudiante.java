@@ -1,6 +1,6 @@
 package com.uniajc.mvn.modelo;
 
-// src/main/java/com/uniajc/mvn/modelo/Estudiante.java
+
 
 
 public class Estudiante {

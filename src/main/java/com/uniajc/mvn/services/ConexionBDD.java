@@ -1,6 +1,6 @@
 package com.uniajc.mvn.services;
 
-// src/main/java/com/uniajc/mvn/services/ConexionBDD.java
+
 
 
 import java.sql.Connection;
@@ -22,7 +22,7 @@ public class ConexionBDD {
                 
                 Properties properties = new Properties();
                 
-                // Lectura robusta desde el Classpath de Maven (src/main/resources)
+             
                 properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties")); 
 
                 Class.forName("org.postgresql.Driver");
@@ -31,14 +31,14 @@ public class ConexionBDD {
                 String username = properties.getProperty("USERNAME");
                 String password = properties.getProperty("PASSWORD");
                 
-                // ¡AQUÍ ES DONDE SUELE FALLAR SI HAY UN ERROR DE URL/CREDENCIALES!
+                
                 conn = DriverManager.getConnection(url, username, password);
             }
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Error al cargar el driver JDBC.", "Error de Driver", JOptionPane.ERROR_MESSAGE);
             throw new RuntimeException("Driver no encontrado", e); 
         } catch (SQLException e) {
-            // Este mensaje te dirá exactamente el problema de conexión (URL, usuario, contraseña)
+            
             JOptionPane.showMessageDialog(null, 
                 "Error al conectar a la base de datos:\n" + e.getMessage() + "\nVerifique la URL y credenciales de NeonDB.", 
                 "Error de SQL (Conexión)", 

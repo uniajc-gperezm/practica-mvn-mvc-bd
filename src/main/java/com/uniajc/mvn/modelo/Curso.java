@@ -1,7 +1,7 @@
-// src/main/java/com/uniajc/mvn/modelo/Curso.java
+
 package com.uniajc.mvn.modelo;
 
-// src/main/java/com/uniajc/mvn/modelo/Curso.java
+
 
 
 public class Curso {

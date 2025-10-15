@@ -25,7 +25,7 @@ public class EstudianteView extends JFrame {
     
     private MainView mainView; 
 
-    // [CORRECCIÓN SUPER] Constructor vacío para compatibilidad
+    
     public EstudianteView() {
         super(); 
         tableModel = new DefaultTableModel(new String[]{"ID", "Nombre", "Edad"}, 0);
@@ -33,7 +33,7 @@ public class EstudianteView extends JFrame {
         initializeComponents(null);
     }
     
-    // Constructor con MainView
+    
     public EstudianteView(MainView mainView) {
         super("CRUD de Estudiantes - Swing"); 
         tableModel = new DefaultTableModel(new String[]{"ID", "Nombre", "Edad"}, 0);
@@ -41,7 +41,7 @@ public class EstudianteView extends JFrame {
         initializeComponents(mainView);
     }
 
-    // Método que contiene la lógica de inicialización
+    
     private void initializeComponents(MainView mainViewRef) {
         this.mainView = mainViewRef;
         
@@ -86,13 +86,13 @@ public class EstudianteView extends JFrame {
                 tableModel.addRow(new Object[]{e.getId(), e.getNombre(), e.getEdad()});
             }
         } catch (RuntimeException ex) {
-            // Muestra el error de conexión o carga
+            
             JOptionPane.showMessageDialog(this, "Error al cargar datos: " + ex.getMessage(), "Error de BD", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void configurarEventos() {
-        // Evento Guardar: Validación de campos
+        
         btnGuardar.addActionListener(e -> {
             try {
                 String nombre = txtNombre.getText().trim();
@@ -103,7 +103,7 @@ public class EstudianteView extends JFrame {
                     return;
                 }
                 
-                int edad = Integer.parseInt(edadText); // Puede lanzar NumberFormatException
+                int edad = Integer.parseInt(edadText); 
                 
                 controlador.registrarEstudiante(nombre, edad);
                 JOptionPane.showMessageDialog(this, "Estudiante guardado.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -116,7 +116,7 @@ public class EstudianteView extends JFrame {
             }
         });
 
-        // Evento Actualizar: Validación de ID y Edad (Resuelve "For input string: "" en Actualizar)
+       
         btnActualizar.addActionListener(e -> {
             try {
                 String idText = txtId.getText().trim();
@@ -130,7 +130,7 @@ public class EstudianteView extends JFrame {
                 
                 String edadText = txtEdad.getText().trim();
                 if (edadText.isEmpty()) {
-                    // 🚨 Este es el origen del error si se deja vacío
+                    
                     JOptionPane.showMessageDialog(this, "El campo Edad no puede estar vacío.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -147,7 +147,7 @@ public class EstudianteView extends JFrame {
             }
         });
 
-        // Evento Eliminar: Validación de ID (Resuelve "For input string: "" en Eliminar)
+        
         btnEliminar.addActionListener(e -> {
             try {
                 String idText = txtId.getText().trim();
@@ -155,7 +155,7 @@ public class EstudianteView extends JFrame {
                     JOptionPane.showMessageDialog(this, "Debe seleccionar un estudiante o llenar el ID para eliminar.", "Error de Validación", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                int id = Integer.parseInt(idText); // Conversión ahora segura
+                int id = Integer.parseInt(idText); 
                 
                 int confirm = JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar el estudiante ID " + id + "?", "Confirmar", JOptionPane.YES_NO_OPTION);
                 
@@ -170,7 +170,7 @@ public class EstudianteView extends JFrame {
             }
         });
         
-        // ... otros eventos (Limpiar, Seleccionar Tabla, Regresar)
+       
         
         estudianteTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && estudianteTable.getSelectedRow() != -1) {
